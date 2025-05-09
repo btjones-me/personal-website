@@ -51,3 +51,7 @@ The `personal_website.portfolio` package provides a terminal-inspired portfolio 
 - Replace `personal_website/portfolio/static/files/demo_cv.pdf` with your actual resume for the `cv` command.
 - Update command content or add new handlers in `personal_website/portfolio/commands.py`.
 - Run locally with `make flask-app`, which wraps `uv run flask --app personal_website.portfolio.app run --debug`.
+
+## TODO
+
+[ ] Add test coverage
