@@ -57,5 +57,3 @@ The `personal_website.portfolio` package provides a terminal-inspired portfolio 
 [ ] Add test coverage
 [ ] Add LLM call
 [ ] Add hosting
-
-
