@@ -26,7 +26,7 @@ flask-app:
 # Setup commands
 setup: install-dev
 	@echo "Setting up personal-website..."
-	@if [ ! -f .env ]; then cp .env.example .env; echo "Created .env file from template"; fi
+	@if [ ! -f .env ]; then cp .env.example .env && sed -i '/^#/d' .env; echo "Created .env file from template"; fi
 	@echo "Setup complete! Edit .env with your configuration, then run 'make dashboard'"
 
 # Cleanup
