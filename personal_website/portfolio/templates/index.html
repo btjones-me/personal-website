@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+  <div class="intro">
+    <h1>Hello, I'm Benjamin.</h1>
+    <p>
+      Welcome to my command-driven portfolio. Type a command below to explore my work, grab my CV,
+      or learn more about me. Start with <code>help</code> if you're curious.
+    </p>
+  </div>
+</section>
+
+<section class="terminal-wrapper">
+  <div class="terminal">
+    <div class="terminal-header">
+      <span class="dot dot--red"></span>
+      <span class="dot dot--amber"></span>
+      <span class="dot dot--green"></span>
+      <span class="terminal-title">visitor@benjamin:~</span>
+    </div>
+    <div id="terminal-output" class="terminal-output" aria-live="polite"></div>
+    <form id="terminal-form" autocomplete="off" spellcheck="false">
+      <label class="terminal-prompt" for="command-input">visitor@benjamin:~$</label>
+      <input
+        id="command-input"
+        name="command"
+        type="text"
+        placeholder="Type a command…"
+        aria-label="Terminal command input"
+      />
+    </form>
+  </div>
+</section>
+{% endblock %}
+

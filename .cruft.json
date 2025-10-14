@@ -1,0 +1,19 @@
+{
+  "template": "/Users/bjones/repos/python-project-template",
+  "commit": "1296527c5e7ee8b8b29e32ef0e9730586d8ea422",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "personal-website",
+      "project_slug": "personal-website",
+      "package_name": "personal_website",
+      "description": "Using Codex & Claude Code to create a personal website",
+      "author_name": "Ben",
+      "author_email": "NA",
+      "python_version": "3.12",
+      "_template": "/Users/bjones/repos/python-project-template",
+      "_commit": "1296527c5e7ee8b8b29e32ef0e9730586d8ea422"
+    }
+  },
+  "directory": null
+}

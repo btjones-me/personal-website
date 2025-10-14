@@ -1,0 +1,208 @@
+:root {
+  color-scheme: light;
+  --background: #f9fafb;
+  --text-primary: #18181b;
+  --text-secondary: #3f3f46;
+  --accent: #1f2937;
+  --card-background: rgba(255, 255, 255, 0.85);
+  --border: rgba(17, 24, 39, 0.08);
+  --shadow: 0 24px 45px rgba(15, 23, 42, 0.08), 0 12px 24px rgba(15, 23, 42, 0.05);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.12), transparent 45%),
+    radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.14), transparent 40%), var(--background);
+  color: var(--text-primary);
+  font-family: "Urbanist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.page-shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 4rem 1.5rem 5rem;
+}
+
+.hero {
+  max-width: 720px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 4vw, 3rem);
+  margin: 0 0 0.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero p {
+  margin: 0 auto;
+  max-width: 580px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.hero code {
+  font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background: rgba(17, 24, 39, 0.06);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.35rem;
+}
+
+.terminal-wrapper {
+  width: min(95vw, 720px);
+}
+
+.terminal {
+  background: var(--card-background);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(120deg, rgba(15, 23, 42, 0.95), rgba(15, 118, 110, 0.9));
+  color: #f8fafc;
+  font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.terminal-title {
+  margin-left: auto;
+  opacity: 0.75;
+}
+
+.dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+  display: inline-block;
+  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.1);
+}
+
+.dot--red {
+  background: #f87171;
+}
+
+.dot--amber {
+  background: #facc15;
+}
+
+.dot--green {
+  background: #4ade80;
+}
+
+.terminal-output {
+  padding: 2rem 2rem 1rem;
+  min-height: 240px;
+  max-height: 420px;
+  overflow-y: auto;
+  font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--accent);
+  white-space: pre-wrap;
+}
+
+.terminal-entry {
+  margin-bottom: 1.25rem;
+  animation: fade-in 210ms ease-out forwards;
+  opacity: 0;
+}
+
+.terminal-entry--input {
+  color: rgba(15, 23, 42, 0.9);
+}
+
+.terminal-entry--output {
+  color: var(--accent);
+}
+
+.terminal-entry--error {
+  color: #dc2626;
+}
+
+.terminal-entry:last-child {
+  margin-bottom: 0;
+}
+
+.terminal-form {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.8rem 1.75rem;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  background: rgba(248, 250, 252, 0.85);
+}
+
+.terminal-prompt {
+  font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.95rem;
+  color: rgba(15, 23, 42, 0.8);
+}
+
+#command-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.95rem;
+  color: var(--accent);
+  outline: none;
+}
+
+#command-input::placeholder {
+  color: rgba(15, 23, 42, 0.4);
+}
+
+@keyframes fade-in {
+  from {
+    transform: translateY(4px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-shell {
+    padding: 3rem 1rem 4rem;
+  }
+
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .terminal-header {
+    padding: 0.85rem 1.1rem;
+  }
+
+  .terminal-output {
+    padding: 1.5rem 1.25rem 0.75rem;
+  }
+
+  .terminal-form {
+    padding: 0.9rem 1.1rem 1.4rem;
+  }
+}
+
