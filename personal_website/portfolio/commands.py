@@ -102,13 +102,13 @@ class CommandRegistry:
 
     def _about_handler(self, _: str) -> Dict[str, str]:
         about_sections: List[str] = [
-            "Hi, I'm Benjamin Jones — a software engineer who loves crafting thoughtful "
-            "developer experiences and human-friendly tooling.",
-            "I specialize in full-stack product work with a focus on Python, cloud-native "
-            "platforms, and low-friction automation. Lately I've been exploring ways to infuse "
-            "AI assistance into day-to-day workflows.",
-            "When I'm not shipping features, you'll likely find me experimenting with sourdough "
-            "recipes, sketching design ideas, or mentoring folks who are new to tech.",
+            """I currently head up AI & Machine Learning at Motorway, leading teams that build applied AI products powering the UK’s fastest-growing used vehicle marketplace. My work sits at the intersection of AI, product, and engineering — turning complex machine learning and AI into reliable, safe, and commercially impactful solutions.
+
+In addition to my day job, I advise startups on AI, ML, and data science strategy — helping them design, build, and operationalise intelligent systems, and have spoken at a number of conferences including as a main stage speaker at Google Cloud's London Summit in 2024 and Big Data London in 2025.
+
+Before Motorway, I led ML at computer vision startup DeGould and worked as a technical consultant for 4 years across Accenture, Anglo American, and the UK’s Ministry of Defence. My consulting experiences allowed me to hone my ability to spot commercial opportunity — and I take pride in ensuring every AI initiative is grounded in adding real business or user value. 
+
+With a hands-on foundation in data science and ML engineering, my focus more recently has been on delivering transformational experiences with agentic generative AI systems. I’m passionate about building high-performing teams and creating ethical, scalable AI systems that drive real impact.""",
         ]
         return {"kind": "text", "output": "\n\n".join(about_sections)}
 
