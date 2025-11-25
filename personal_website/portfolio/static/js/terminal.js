@@ -2,10 +2,25 @@ const terminalOutput = document.getElementById("terminal-output");
 const terminalForm = document.getElementById("terminal-form");
 const commandInput = document.getElementById("command-input");
 
+function escapeHtml(text) {
+  const div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+function linkify(text) {
+  const escaped = escapeHtml(text);
+  const urlPattern = /(https?:\/\/[^\s<]+)/g;
+  const emailPattern = /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g;
+  return escaped
+    .replace(urlPattern, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>')
+    .replace(emailPattern, '<a href="mailto:$1">$1</a>');
+}
+
 function appendEntry({ type, content }) {
   const entry = document.createElement("div");
   entry.className = `terminal-entry terminal-entry--${type}`;
-  entry.textContent = content;
+  entry.innerHTML = linkify(content);
   terminalOutput.appendChild(entry);
   terminalOutput.scrollTop = terminalOutput.scrollHeight;
 }

@@ -87,6 +87,13 @@ class CommandRegistry:
                 handler=self._clear_handler,
             )
         )
+        self.register(
+            Command(
+                name="contact",
+                description="Get my contact details and social links.",
+                handler=self._contact_handler,
+            )
+        )
 
     def register(self, command: Command) -> None:
         self._commands[command.name.lower()] = command
@@ -122,6 +129,14 @@ With a hands-on foundation in data science and ML engineering, my focus more rec
 
     def _clear_handler(self, _: str) -> Dict[str, str]:
         return {"kind": "clear", "output": ""}
+
+    def _contact_handler(self, _: str) -> Dict[str, str]:
+        contact_info = """Get in touch:
+
+  Email     btjones.me+contact@gmail.com
+  GitHub    https://github.com/btjones-me
+  LinkedIn  https://www.linkedin.com/in/benthomasjones/"""
+        return {"kind": "text", "output": contact_info}
 
     # --- Utility helpers -----------------------------------------------------------
     def _format_command_line(self, command: Command) -> str:

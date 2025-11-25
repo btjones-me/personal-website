@@ -1,59 +1,47 @@
 # personal-website
 
-Using Codex & Claude Code to create a personal website
+A terminal-inspired personal portfolio built with Flask, developed with AI-assisted tooling (Codex & Claude Code).
 
-## Setup
+Visitors interact with a command-line interface to explore my work, download my CV, and learn more about me.
 
-1. Clone the repository
-2. Run setup: `make setup`
-3. Edit `.env` with your configuration
-4. Start the dashboard: `make dashboard`
-5. Launch the command portfolio: `make flask-app`
-
-## Development
-
-- **Install dependencies**: `make install-dev`
-- **Run tests**: `make test`
-- **Lint code**: `make lint`
-- **Format code**: `make format`
-- **Clean artifacts**: `make clean`
-- **Run Flask portfolio**: `make flask-app`
-
-## Template Updates
-
-If this project was created with cruft, you can update it when the template improves:
+## Quick Start
 
 ```bash
-cruft update
+# Clone and setup
+git clone <repo-url> && cd personal-website
+make setup
+
+# Edit .env with your configuration
+# Then run the portfolio
+make run
 ```
 
-## Project Structure
-
-```
-personal-website/
-├── personal_website/     # Main package
-├── tests/                               # Test files
-├── personal_website/portfolio/          # Command-style portfolio (Flask)
-├── .env.example                         # Environment template
-├── pyproject.toml                       # Project configuration
-└── Makefile                            # Development commands
-```
+Open [http://localhost:5000](http://localhost:5000) and type `help` to get started.
 
 ## Requirements
 
 - Python 3.12+
-- UV package manager
+- [UV](https://docs.astral.sh/uv/) package manager
 
-## Command Portfolio App
+## Development
 
-The `personal_website.portfolio` package provides a terminal-inspired portfolio interface:
+| Command        | Description                        |
+|----------------|-------------------------------------|
+| `make setup`   | Install dev dependencies + seed `.env` |
+| `make run`     | Run the Flask portfolio locally    |
+| `make test`    | Run pytest with coverage           |
+| `make lint`    | Check code with Ruff               |
+| `make format`  | Auto-format with Ruff              |
+| `make clean`   | Remove caches and build artifacts  |
 
-- Replace `personal_website/portfolio/static/files/demo_cv.pdf` with your actual resume for the `cv` command.
-- Update command content or add new handlers in `personal_website/portfolio/commands.py`.
-- Run locally with `make flask-app`, which wraps `uv run flask --app personal_website.portfolio.app run --debug`.
+## Customization
+
+- **Bio**: Edit `_about_handler` in `personal_website/portfolio/commands.py`
+- **CV**: Replace `personal_website/portfolio/static/files/demo_cv.pdf` with your resume
+- **Commands**: Add new handlers in `commands.py` and register them in `_register_default_commands()`
 
 ## TODO
 
-[ ] Add test coverage
-[ ] Add LLM call
-[ ] Add hosting
+- [ ] Add test coverage
+- [ ] Add LLM chat integration
+- [ ] Deploy to hosting platform

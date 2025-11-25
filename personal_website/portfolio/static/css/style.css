@@ -140,6 +140,17 @@ body {
   color: #dc2626;
 }
 
+.terminal-entry a {
+  color: #0d9488;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 150ms ease;
+}
+
+.terminal-entry a:hover {
+  color: #14b8a6;
+}
+
 .terminal-entry:last-child {
   margin-bottom: 0;
 }

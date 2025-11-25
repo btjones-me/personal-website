@@ -20,7 +20,7 @@ test:
 dashboard:
 	uv run streamlit run personal_website/dashboard.py
 
-flask-app:
+run:
 	uv run flask --app personal_website.portfolio.app run --debug
 
 # Setup commands
