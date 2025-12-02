@@ -13,6 +13,9 @@ dependencies = [
     "loguru>=0.7.0",
     "pandas>=2.0.0",
     "flask>=3.0.0",
+    "pydantic-ai>=0.1.0",
+    "flask-limiter>=3.5.0",
+    "logfire>=4.15.1",
 ]
 
 [project.optional-dependencies]
@@ -37,6 +40,11 @@ addopts = "--cov=personal_website --cov-report=term-missing"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.1.0",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["personal_website"]

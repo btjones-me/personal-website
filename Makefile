@@ -1,4 +1,4 @@
-.PHONY: install install-dev lint format test clean dashboard flask-app setup
+.PHONY: install install-dev lint format test clean dashboard flask-app setup logfire-project
 
 # Development commands
 install:
@@ -24,6 +24,10 @@ run:
 	uv run flask --app personal_website.portfolio.app run --debug
 
 # Setup commands
+logfire-project:
+	uv run logfire auth
+	uv run logfire projects use testing-project
+
 setup: install-dev
 	@echo "Setting up personal-website..."
 	@if [ ! -f .env ]; then cp .env.example .env && sed -i '/^#/d' .env; echo "Created .env file from template"; fi
