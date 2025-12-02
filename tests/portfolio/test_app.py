@@ -37,9 +37,21 @@ def test_unknown_command_returns_error(client):
     response = client.post("/command", json={"command": "foobar"})
     data = response.get_json()
     assert response.status_code == 200
+    assert data["kind"] in {"ai", "error"}
+    assert isinstance(data.get("output"), str) and data["output"]
+    if data["kind"] == "error":
+        # If the LLM fallback is unavailable, we fall back to a static error.
+        assert data["output"] == (
+            "We seem to be having a bit of trouble on our end - sorry about that. Try 'help' to see available commands."
+        )
+
+def test_unix_command_hint(client):
+    response = client.post("/command", json={"command": "ls -la"})
+    data = response.get_json()
+    assert response.status_code == 200
     assert data == {
         "kind": "error",
-        "output": "Unknown command: 'foobar'. Type 'help' to see options.",
+        "output": "Oops sorry, this is just a simulation of a real terminal. Type 'help' to see available commands.",
     }
 
 

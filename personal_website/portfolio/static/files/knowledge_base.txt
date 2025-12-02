@@ -1,0 +1,39 @@
+# Ben's Knowledge Base
+
+## Contact Information
+- Email: btjones.me+contact@gmail.com
+- GitHub: https://github.com/btjones-me
+- LinkedIn: https://www.linkedin.com/in/benthomasjones/
+
+## Current Role
+Head of AI & Machine Learning at Motorway - the UK's fastest-growing used vehicle marketplace.
+
+## Key Skills
+- AI/ML Strategy and Leadership
+- Applied Machine Learning and MLOps
+- Generative AI and Agentic Systems
+- Computer Vision
+- Team Building and Management
+- Technical Consulting
+
+## Speaking Experience
+- Google Cloud London Summit 2024 (Main Stage Speaker)
+- Big Data London 2025
+
+## Previous Experience
+- ML Lead at DeGould (Computer Vision Startup)
+- Technical Consultant at Accenture
+- Consultant at Anglo American
+- Consultant at UK Ministry of Defence
+
+## Areas of Expertise
+- Building production ML systems
+- AI product development
+- Ethical AI implementation
+- Scalable AI infrastructure
+- Data science strategy for startups
+
+---
+Add your own additional information below this line:
+
+
