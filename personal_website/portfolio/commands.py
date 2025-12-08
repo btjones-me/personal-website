@@ -104,7 +104,10 @@ class CommandRegistry:
             return jsonify(
                 {
                     "kind": "error",
-                    "output": "AI assistant is unavailable. Type 'help' to see available commands.",
+                    "output": (
+                        "We seem to be having a bit of trouble on our end... "
+                        "Try again later or type help to see other available commands"
+                    ),
                 }
             )
 

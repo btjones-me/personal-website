@@ -42,7 +42,8 @@ def test_unknown_command_returns_error(client):
     if data["kind"] == "error":
         # If the LLM fallback is unavailable, we fall back to a static error.
         assert data["output"] == (
-            "We seem to be having a bit of trouble on our end - sorry about that. Try 'help' to see available commands."
+            "We seem to be having a bit of trouble on our end... "
+            "Try again later or type help to see other available commands"
         )
 
 def test_unix_command_hint(client):
@@ -68,7 +69,7 @@ def test_cv_command_provides_download_response(client):
     assert response.status_code == 200
     assert data == {
         "kind": "download",
-        "output": "Opening CV download in a new tab...",
+        "output": "",
         "url": "/download/cv",
     }
 
