@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero hero--summary">
+  <div class="intro">
+    <h1>Hello, I'm Ben 👋</h1>
+    <p>
+      Prefer a quick overview? Use the tabs to explore the highlights or
+      <a href="{{ url_for('index') }}">head back to the terminal view</a>.
+    </p>
+  </div>
+</section>
+
+<section class="summary-wrapper">
+  <div class="summary-card">
+    <div class="summary-tabs" role="tablist" aria-label="Portfolio sections">
+      {% for section in sections %}
+      <button
+        class="summary-tab{% if loop.first %} is-active{% endif %}"
+        type="button"
+        role="tab"
+        aria-selected="{{ 'true' if loop.first else 'false' }}"
+        aria-controls="panel-{{ section.name }}"
+        id="tab-{{ section.name }}"
+        data-summary-tab="{{ section.name }}"
+        data-kind="{{ section.payload.kind }}"
+      >
+        {{ section.title }}
+      </button>
+      {% endfor %}
+    </div>
+
+    <div class="summary-panels">
+      {% for section in sections %}
+      <div
+        class="summary-panel{% if loop.first %} is-active{% endif %}"
+        id="panel-{{ section.name }}"
+        role="tabpanel"
+        aria-labelledby="tab-{{ section.name }}"
+        data-summary-panel="{{ section.name }}"
+        data-kind="{{ section.payload.kind }}"
+        {% if not loop.first %}hidden{% endif %}
+      >
+        <p class="summary-description">{{ section.description }}</p>
+
+        {% if section.payload.kind == "download" %}
+        <div class="summary-actions">
+          <a class="summary-download" href="{{ section.payload.url }}" data-cv-link>
+            Download CV
+          </a>
+          <p class="summary-message" data-summary-message>
+            {{ section.payload.output or "CV download will open in a new tab." }}
+          </p>
+        </div>
+        {% else %}
+        <div class="summary-content">
+          {{ section.payload.output | replace('\n', '<br />') | safe }}
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/summary.js') }}" defer></script>
+{% endblock %}
+

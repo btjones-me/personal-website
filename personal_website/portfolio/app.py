@@ -3,7 +3,7 @@ from __future__ import annotations
 import uuid
 from pathlib import Path
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, render_template, request
 
 from personal_website.config import config
 from personal_website.logger import logger
@@ -43,6 +43,12 @@ def create_app() -> Flask:
     @app.get("/")
     def index():
         return command_registry.render_index()
+
+    @app.get("/summary")
+    def summary():
+        """Render a tabbed summary view for users who prefer not to use the terminal."""
+        sections = command_registry.get_summary_sections()
+        return render_template("summary.html", sections=sections)
 
     @app.post("/command")
     def process_command():
