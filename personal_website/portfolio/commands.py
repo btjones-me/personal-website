@@ -1,9 +1,9 @@
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Callable, Dict, Iterable, List
-import re
 
 from flask import Response, jsonify, render_template, request, send_file, url_for
 
@@ -20,9 +20,7 @@ class Command:
 class CommandRegistry:
     """Encapsulates command definitions and bridge functions for Flask routes."""
 
-    _SIMULATED_TERMINAL_MESSAGE = (
-        "Oops sorry, this is just a simulation of a real terminal. Type 'help' to see available commands."
-    )
+    _SIMULATED_TERMINAL_MESSAGE = "Oops sorry, this is just a simulation of a real terminal. Type 'help' to see available commands."
 
     _UNIX_COMMANDS = (
         "ls",
@@ -105,7 +103,7 @@ class CommandRegistry:
                 {
                     "kind": "error",
                     "output": (
-                        "We seem to be having a bit of trouble on our end... "
+                        "Sorry! We seem to be having a bit of trouble on our end... "
                         "Try again later or type help to see other available commands"
                     ),
                 }
@@ -181,9 +179,7 @@ class CommandRegistry:
 
     # --- Command handlers ----------------------------------------------------------
     def _help_handler(self, _: str) -> Dict[str, str]:
-        commands_help = "\n".join(
-            self._format_command_line(cmd) for cmd in self._commands.values()
-        )
+        commands_help = "\n".join(self._format_command_line(cmd) for cmd in self._commands.values())
         banner = (
             "Available commands (type them just like you would in a terminal):\n"
             f"{commands_help}\n\n"

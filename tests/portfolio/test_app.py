@@ -46,6 +46,7 @@ def test_unknown_command_returns_error(client):
             "Try again later or type help to see other available commands"
         )
 
+
 def test_unix_command_hint(client):
     response = client.post("/command", json={"command": "ls -la"})
     data = response.get_json()

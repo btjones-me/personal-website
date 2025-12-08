@@ -138,4 +138,3 @@ class TestGuards:
         repetitive = "test test test test test test other"
         result = validate_input(repetitive)
         assert not result.is_valid
-

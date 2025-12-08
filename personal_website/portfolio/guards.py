@@ -95,4 +95,3 @@ def sanitize_output(response: str, max_chars: int = 1500) -> str:
         response = response[:max_chars].rsplit(" ", 1)[0] + "..."
 
     return response.strip()
-

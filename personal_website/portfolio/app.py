@@ -59,9 +59,7 @@ def create_app() -> Flask:
         """Handle chat mode messages with conversation history."""
         # Apply rate limiting if available
         if limiter:
-            limiter.limit(f"{config.LLM_RATE_LIMIT_PER_MINUTE} per minute")(
-                lambda: None
-            )()
+            limiter.limit(f"{config.LLM_RATE_LIMIT_PER_MINUTE} per minute")(lambda: None)()
 
         payload = request.get_json(silent=True) or {}
         message = (payload.get("message") or "").strip()
@@ -116,6 +114,7 @@ def create_app() -> Flask:
     def favicon():
         """Explicit favicon route as fallback."""
         from flask import send_from_directory
+
         return send_from_directory(
             app.static_folder, "favicon.ico", mimetype="image/vnd.microsoft.icon"
         )
@@ -124,11 +123,11 @@ def create_app() -> Flask:
     def healthz():
         """Health check endpoint for Railway readiness checks."""
         status = {"status": "healthy", "service": "portfolio"}
-        
+
         # Check LLM service initialization (without making API call)
         try:
             from personal_website.portfolio.llm import get_llm_service
-            
+
             llm = get_llm_service()  # This initializes but doesn't call API
             status["llm_initialized"] = llm.agent is not None
             status["llm_model"] = config.LLM_MODEL
@@ -136,7 +135,7 @@ def create_app() -> Flask:
             status["llm_initialized"] = False
             status["llm_error"] = str(e)
             logger.warning(f"LLM initialization check failed: {e}")
-        
+
         return jsonify(status), 200
 
     @app.errorhandler(429)

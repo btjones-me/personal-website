@@ -13,7 +13,6 @@ import os
 
 import pytest
 
-
 _spend_cap_flag = (os.getenv("RUN_GEMINI_SPEND_CAP_TEST") or "").lower()
 _spend_cap_enabled = _spend_cap_flag in {"1", "true", "yes", "on"}
 
@@ -72,4 +71,3 @@ def test_spend_cap_trips_before_three_dollars(llm_module):
         keyword in str(caught).lower()
         for keyword in ("quota", "limit", "billing", "insufficient", "spend", "cap")
     ), f"Unexpected error while probing spend cap: {caught}"
-
