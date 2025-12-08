@@ -98,7 +98,7 @@ def create_app() -> Flask:
 
     @app.get("/download/cv")
     def download_cv():
-        cv_path = Path(app.static_folder) / "files" / "demo_cv.pdf"
+        cv_path = Path(app.static_folder) / "files" / "cv.pdf"
         if not cv_path.exists():
             return command_registry.missing_cv_response()
         return command_registry.send_cv(cv_path)

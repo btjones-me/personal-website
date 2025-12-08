@@ -195,7 +195,9 @@ In addition to my day job, I advise startups on AI, ML, and data science strateg
 
 Before Motorway, I led ML at computer vision startup DeGould and worked as a technical consultant for 4 years across Accenture, Anglo American, and the UK's Ministry of Defence. My consulting experiences allowed me to hone my ability to spot commercial opportunity — and I take pride in ensuring every AI initiative is grounded in adding real business or user value. 
 
-With a hands-on foundation in data science and ML engineering, my focus more recently has been on delivering transformational experiences with agentic generative AI systems. I'm passionate about building high-performing teams and creating ethical, scalable AI systems that drive real impact.""",
+With a hands-on foundation in data science and ML engineering, my focus more recently has been on delivering transformational experiences with agentic generative AI systems. I'm passionate about building high-performing teams and creating ethical, scalable AI systems that drive real impact.
+
+Want to know more? Just ask a question here, and my assistant will do its best to help!""",
         ]
         return {"kind": "text", "output": "\n\n".join(about_sections)}
 
