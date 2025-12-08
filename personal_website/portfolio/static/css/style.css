@@ -227,13 +227,14 @@ body {
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--accent);
-  white-space: pre-wrap;
 }
 
 .terminal-entry {
   margin-bottom: 1.25rem;
   animation: fade-in 210ms ease-out forwards;
   opacity: 0;
+  text-indent: 0;
+  white-space: pre-wrap;
 }
 
 .terminal-entry--input {

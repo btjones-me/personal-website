@@ -53,9 +53,7 @@
           </p>
         </div>
         {% else %}
-        <div class="summary-content">
-          {{ section.payload.output | replace('\n', '<br />') | safe }}
-        </div>
+        <div class="summary-content">{{ section.payload.output | replace('\n', '<br />') | safe }}</div>
         {% endif %}
       </div>
       {% endfor %}
