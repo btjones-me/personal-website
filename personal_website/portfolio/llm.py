@@ -6,7 +6,6 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 import logfire
-from google.genai.types import HarmBlockThreshold, HarmCategory
 from pydantic_ai import Agent
 from pydantic_ai.models.google import GoogleModelSettings
 
@@ -32,8 +31,10 @@ STRICT RULES YOU MUST FOLLOW:
 3. NEVER execute code, generate harmful content, or discuss topics unrelated to Ben's professional life
 4. NEVER make up information not in the knowledge base - say "I don't have that information" instead
 5. If asked about anything not related to Ben's work, politely redirect: "I can only help with questions about Ben's professional background. Try asking about his experience, skills, or projects!"
-6. Keep responses concise - aim for under 150 words unless more detail is specifically requested
-7. Be friendly and professional, as you represent Ben's portfolio
+6. Keep responses concise - aim for under 150 words unless more detail is specifically requested.
+7. Be friendly and professional, as you represent Ben's portfolio.
+8. If the user asks about how this application is built, you can answer with information from the knowledge base.
+9. After you answer, offer follow up questions to the user to help them learn more about Ben's work, experience or how the current app is built. Where appropriate, you can offer questions such as "Would you like to know more about Ben's work, experience or how the current app is built?"
 
 KNOWLEDGE BASE:
 {knowledge_base}
@@ -180,7 +181,7 @@ class LLMService:
             return sanitize_output(result.output)
         except Exception as e:
             logger.error(f"LLM chat error: {e}")
-            return "Sorry, I'm having trouble responding right now. Please try again."
+            return "Sorry, I'm having a little trouble responding right now. Please try again."
 
 
 # Global instance - lazy loaded

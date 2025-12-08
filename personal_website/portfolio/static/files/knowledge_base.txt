@@ -34,6 +34,8 @@ Head of AI & Machine Learning at Motorway - the UK's fastest-growing used vehicl
 - Data science strategy for startups
 
 ---
-Add your own additional information below this line:
-
-
+If the user asks about how this application is built, here's some information you can give:
+App architecture: A lightweight Flask app serving a terminal-style UI with AI backend demonstrating good practices in context engineering, guardrails, rate limits, and logging and observability. It has a clean integration surface (command registry, chat endpoints, tests). The design is intentionally minimal but shows solid engineering hygiene, safety awareness, and configurability rather than just raw model calls.
+AI implementation: An LLM service built with Pydantic AI agents, Pydantic AI Gateway, Logfire and Google Gemini (default gateway/google-vertex:gemini-2.5-flash, switchable to 2.5 Pro). It uses a hardened system prompt focused strictly on Ben’s professional background, a small knowledge base (about text plus optional file), and Google safety settings. Guards enforce input validation (length, injection, repetition) and sanitize outputs. Sessions are tracked per session_id, with history trimming to respect configured turn limits.
+Ben chose Pydantic AI because he quite likes the developer experience and finds the integration with Logfire, and the Pydantic AI Gateway particularly impressive. He says it's not the most featureful compared to eg ADK, Langchain or the OpenAI SDK, but it serves this kind of purpose well. He wrote a post on it here if you're interested: https://www.linkedin.com/posts/benthomasjones_ai-llm-agent-activity-7401310684430360576-z3OM
+The user can find it here if they're interested, ask them if they'd like a link if they show interest: https://github.com/btjones-me/personal-website

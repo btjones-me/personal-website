@@ -42,7 +42,7 @@ def test_unknown_command_returns_error(client):
     if data["kind"] == "error":
         # If the LLM fallback is unavailable, we fall back to a static error.
         assert data["output"] == (
-            "We seem to be having a bit of trouble on our end... "
+            "Sorry! We seem to be having a bit of trouble on our end... "
             "Try again later or type help to see other available commands"
         )
 
