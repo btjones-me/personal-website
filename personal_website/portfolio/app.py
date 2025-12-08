@@ -22,15 +22,6 @@ def create_app() -> Flask:
         static_folder=str(STATIC_DIR),
         static_url_path="/static",
     )
-    
-    # Log static folder path for debugging
-    logger.info(f"Static folder: {STATIC_DIR}")
-    logger.info(f"Static folder exists: {STATIC_DIR.exists()}")
-    if STATIC_DIR.exists():
-        logger.info(f"Static folder contents: {list(STATIC_DIR.iterdir())}")
-        favicon_path = STATIC_DIR / "favicon.ico"
-        logger.info(f"Favicon path: {favicon_path}")
-        logger.info(f"Favicon exists: {favicon_path.exists()}")
 
     # Configure rate limiting
     try:
@@ -122,6 +113,25 @@ def create_app() -> Flask:
         return send_from_directory(
             app.static_folder, "favicon.ico", mimetype="image/vnd.microsoft.icon"
         )
+
+    @app.get("/healthz")
+    def healthz():
+        """Health check endpoint for Railway readiness checks."""
+        status = {"status": "healthy", "service": "portfolio"}
+        
+        # Check LLM service initialization (without making API call)
+        try:
+            from personal_website.portfolio.llm import get_llm_service
+            
+            llm = get_llm_service()  # This initializes but doesn't call API
+            status["llm_initialized"] = llm.agent is not None
+            status["llm_model"] = config.LLM_MODEL
+        except Exception as e:
+            status["llm_initialized"] = False
+            status["llm_error"] = str(e)
+            logger.warning(f"LLM initialization check failed: {e}")
+        
+        return jsonify(status), 200
 
     @app.errorhandler(429)
     def ratelimit_handler(e):
