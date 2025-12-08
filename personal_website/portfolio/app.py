@@ -23,12 +23,14 @@ def create_app() -> Flask:
         static_url_path="/static",
     )
     
-    # Log static folder path for debugging (only in debug mode)
-    if config.DEBUG:
-        logger.info(f"Static folder: {STATIC_DIR}")
-        logger.info(f"Static folder exists: {STATIC_DIR.exists()}")
-        if STATIC_DIR.exists():
-            logger.info(f"Static folder contents: {list(STATIC_DIR.iterdir())}")
+    # Log static folder path for debugging
+    logger.info(f"Static folder: {STATIC_DIR}")
+    logger.info(f"Static folder exists: {STATIC_DIR.exists()}")
+    if STATIC_DIR.exists():
+        logger.info(f"Static folder contents: {list(STATIC_DIR.iterdir())}")
+        favicon_path = STATIC_DIR / "favicon.ico"
+        logger.info(f"Favicon path: {favicon_path}")
+        logger.info(f"Favicon exists: {favicon_path.exists()}")
 
     # Configure rate limiting
     try:
@@ -112,6 +114,14 @@ def create_app() -> Flask:
         if not cv_path.exists():
             return command_registry.missing_cv_response()
         return command_registry.send_cv(cv_path)
+
+    @app.get("/favicon.ico")
+    def favicon():
+        """Explicit favicon route as fallback."""
+        from flask import send_from_directory
+        return send_from_directory(
+            app.static_folder, "favicon.ico", mimetype="image/vnd.microsoft.icon"
+        )
 
     @app.errorhandler(429)
     def ratelimit_handler(e):
