@@ -48,3 +48,7 @@ dev = [
 
 [tool.hatch.build.targets.wheel]
 packages = ["personal_website"]
+include = [
+    "personal_website/portfolio/static/**/*",
+    "personal_website/portfolio/templates/**/*",
+]

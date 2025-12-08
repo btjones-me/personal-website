@@ -10,15 +10,25 @@ from personal_website.logger import logger
 from personal_website.portfolio.commands import CommandRegistry
 
 PACKAGE_DIR = Path(__file__).resolve().parent
+STATIC_DIR = PACKAGE_DIR / "static"
+TEMPLATES_DIR = PACKAGE_DIR / "templates"
 
 
 def create_app() -> Flask:
     """Create and configure the Flask application."""
     app = Flask(
         __name__,
-        template_folder=str(PACKAGE_DIR / "templates"),
-        static_folder=str(PACKAGE_DIR / "static"),
+        template_folder=str(TEMPLATES_DIR),
+        static_folder=str(STATIC_DIR),
+        static_url_path="/static",
     )
+    
+    # Log static folder path for debugging (only in debug mode)
+    if config.DEBUG:
+        logger.info(f"Static folder: {STATIC_DIR}")
+        logger.info(f"Static folder exists: {STATIC_DIR.exists()}")
+        if STATIC_DIR.exists():
+            logger.info(f"Static folder contents: {list(STATIC_DIR.iterdir())}")
 
     # Configure rate limiting
     try:
