@@ -6,9 +6,12 @@ Visitors interact with a command-line interface to explore my work, download my 
 
 ## Quick Start
 
+This project uses `uv` as the package manager. 
+
 ```bash
 # Clone and setup
 git clone <repo-url> && cd personal-website
+# Assumes uv is installed
 make setup
 
 # Edit .env with your configuration
@@ -17,6 +20,7 @@ make run
 ```
 
 Open [http://localhost:5000](http://localhost:5000) and type `help` to get started.
+Prefer a quick summary? Visit [http://localhost:5000/summary](http://localhost:5000/summary).
 
 ## Requirements
 
@@ -37,11 +41,11 @@ Open [http://localhost:5000](http://localhost:5000) and type `help` to get start
 ## Customization
 
 - **Bio**: Edit `_about_handler` in `personal_website/portfolio/commands.py`
-- **CV**: Replace `personal_website/portfolio/static/files/demo_cv.pdf` with your resume
+- **CV**: Replace `personal_website/portfolio/static/files/cv.pdf` with your resume
 - **Commands**: Add new handlers in `commands.py` and register them in `_register_default_commands()`
 
 ## TODO
 
-- [ ] Add test coverage
-- [ ] Add LLM chat integration
-- [ ] Deploy to hosting platform
+- [x] Add test coverage
+- [x] Add LLM chat integration
+- [x] Deploy to hosting platform

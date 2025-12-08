@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Dict, Iterable, List
+from typing import Any, Callable, Dict, Iterable, List
 import re
 
 from flask import Response, jsonify, render_template, request, send_file, url_for
@@ -52,6 +52,7 @@ class CommandRegistry:
     def __init__(self) -> None:
         self._commands: Dict[str, Command] = {}
         self._llm_enabled = True
+        self._summary_commands = ("about", "contact", "cv")
         self._register_default_commands()
 
     # --- Flask integration helpers -------------------------------------------------
@@ -205,7 +206,7 @@ Want to know more? Just ask a question here, and my assistant will do its best t
         download_url = url_for("download_cv")
         return {
             "kind": "download",
-            "output": "Opening CV download in a new tab...",
+            "output": "",
             "url": download_url,
         }
 
@@ -246,3 +247,24 @@ Want to know more? Just ask a question here, and my assistant will do its best t
     def _is_unix_command(self, raw_command: str) -> bool:
         """Detect common Unix commands to nudge users toward the simulated commands."""
         return bool(self._UNIX_PATTERN.match(raw_command))
+
+    def get_summary_sections(self) -> List[Dict[str, Any]]:
+        """Return a list of commands to surface in the summary view."""
+        sections: List[Dict[str, Any]] = []
+        for name in self._summary_commands:
+            command = self._commands.get(name)
+            if not command:
+                continue
+
+            payload = command.handler(command.name)
+
+            sections.append(
+                {
+                    "name": command.name,
+                    "title": command.name.title(),
+                    "description": command.description,
+                    "payload": payload,
+                }
+            )
+
+        return sections
