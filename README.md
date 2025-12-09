@@ -4,6 +4,9 @@ A terminal-inspired personal portfolio built with Flask, developed with AI-assis
 
 Visitors interact with a command-line interface to explore my work, download my CV, and learn more about me.
 
+<img width="2934" height="1474" alt="image" src="https://github.com/user-attachments/assets/09fcdfa3-5b1c-45b0-8a5d-5feb61c3623c" />
+
+
 ## Quick Start
 
 This project uses `uv` as the package manager. 
