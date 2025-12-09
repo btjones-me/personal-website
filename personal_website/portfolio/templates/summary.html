@@ -44,13 +44,10 @@
         <p class="summary-description">{{ section.description }}</p>
 
         {% if section.payload.kind == "download" %}
-        <div class="summary-actions">
-          <a class="summary-download" href="{{ section.payload.url }}" data-cv-link>
-            Download CV
-          </a>
-          <p class="summary-message" data-summary-message>
-            {{ section.payload.output or "CV download will open in a new tab." }}
-          </p>
+        <div class="summary-actions" style="display: flex; justify-content: center;">
+            <a class="summary-download" href="{{ section.payload.url }}" data-cv-link>
+              Download CV
+            </a>
         </div>
         {% else %}
         <div class="summary-content">{{ section.payload.output | replace('\n', '<br />') | safe }}</div>

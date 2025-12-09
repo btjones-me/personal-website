@@ -1,6 +1,6 @@
 # Deploying the Flask Portfolio App to Railway (Free Tier)
 
-These steps focus on deploying the Flask app (`personal_website/portfolio/app.py`) to Railway using the free tier. The Streamlit dashboard is out of scope.
+These steps focus on deploying the Flask app (`personal_website/portfolio/app.py`) to Railway using the free tier.
 
 ## Prerequisites
 - Railway account (free tier).

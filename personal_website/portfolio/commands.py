@@ -50,7 +50,7 @@ class CommandRegistry:
     def __init__(self) -> None:
         self._commands: Dict[str, Command] = {}
         self._llm_enabled = True
-        self._summary_commands = ("about", "contact", "cv")
+        self._summary_commands = ("about", "contact", "cv", "this-app")
         self._register_default_commands()
 
     # --- Flask integration helpers -------------------------------------------------
@@ -147,6 +147,13 @@ class CommandRegistry:
         )
         self.register(
             Command(
+                name="this-app",
+                description="Learn how this app is built and how the AI works.",
+                handler=self._this_app_handler,
+            )
+        )
+        self.register(
+            Command(
                 name="clear",
                 description="Clear the virtual terminal history.",
                 handler=self._clear_handler,
@@ -222,6 +229,23 @@ class CommandRegistry:
             "url": download_url,
         }
 
+    def _this_app_handler(self, _: str) -> Dict[str, str]:
+        app_overview = (
+            "App architecture: A lightweight Flask app serving a terminal-style UI with an AI "
+            "backend. It serves as a demonstration practicing context engineering, guardrails, rate "
+            "limits, and logging/observability. Commands are handled through a registry and a "
+            "summary view; the design is intentionally minimal but shows solid engineering "
+            "hygiene, safety awareness, and configurability rather than just raw model calls.\n\n"
+            "AI implementation: An LLM service built with Pydantic AI agents, the Pydantic AI "
+            "Gateway, Logfire, and Google Gemini (default gateway/google-vertex:gemini-2.5-flash, "
+            "switchable to 2.5 Pro). It uses a hardened system prompt focused strictly on Ben’s "
+            "professional background plus a small knowledge base file, and Google safety settings. "
+            "Guards enforce input validation (length, injection, repetition) and sanitize outputs. "
+            "Sessions are tracked per session_id with history trimming based on configured turn "
+            "limits.\n"
+        )
+        return {"kind": "text", "output": app_overview}
+
     def _clear_handler(self, _: str) -> Dict[str, str]:
         return {"kind": "clear", "output": ""}
 
@@ -273,7 +297,7 @@ class CommandRegistry:
             sections.append(
                 {
                     "name": command.name,
-                    "title": command.name.title(),
+                    "title": command.name.replace("_", " ").lower(),
                     "description": command.description,
                     "payload": payload,
                 }
