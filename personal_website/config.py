@@ -12,6 +12,7 @@ class Config:
 
     DEBUG = os.getenv("DEBUG", "false").lower() == "true"
     LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
+    GA_MEASUREMENT_ID = (os.getenv("GA_MEASUREMENT_ID") or "G-9X3NQ8BQ76").strip()
 
     # LLM Configuration
     PYDANTIC_AI_GATEWAY_API_KEY = os.getenv("PYDANTIC_AI_GATEWAY_API_KEY", "")

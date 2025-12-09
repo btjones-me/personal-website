@@ -23,6 +23,11 @@ def create_app() -> Flask:
         static_url_path="/static",
     )
 
+    @app.context_processor
+    def inject_globals():
+        """Expose config-derived globals to templates."""
+        return {"ga_measurement_id": config.GA_MEASUREMENT_ID}
+
     # Configure rate limiting
     try:
         from flask_limiter import Limiter
