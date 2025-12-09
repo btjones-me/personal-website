@@ -64,10 +64,8 @@ def test_spend_cap_trips_before_three_dollars(llm_module):
             break
 
     assert caught is not None, (
-        "Expected spend cap/quota enforcement before ~$3 usage, "
-        f"but no error after {max_attempts} large calls."
+        f"Expected spend cap/quota enforcement before ~$3 usage, but no error after {max_attempts} large calls."
     )
     assert any(
-        keyword in str(caught).lower()
-        for keyword in ("quota", "limit", "billing", "insufficient", "spend", "cap")
+        keyword in str(caught).lower() for keyword in ("quota", "limit", "billing", "insufficient", "spend", "cap")
     ), f"Unexpected error while probing spend cap: {caught}"

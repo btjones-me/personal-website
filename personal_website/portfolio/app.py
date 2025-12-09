@@ -66,9 +66,7 @@ def create_app() -> Flask:
         session_id = payload.get("session_id") or str(uuid.uuid4())
 
         if not message:
-            return jsonify(
-                {"kind": "error", "output": "Please enter a message.", "session_id": session_id}
-            )
+            return jsonify({"kind": "error", "output": "Please enter a message.", "session_id": session_id})
 
         try:
             from personal_website.portfolio.llm import get_llm_service
@@ -115,9 +113,7 @@ def create_app() -> Flask:
         """Explicit favicon route as fallback."""
         from flask import send_from_directory
 
-        return send_from_directory(
-            app.static_folder, "favicon.ico", mimetype="image/vnd.microsoft.icon"
-        )
+        return send_from_directory(app.static_folder, "favicon.ico", mimetype="image/vnd.microsoft.icon")
 
     @app.get("/healthz")
     def healthz():

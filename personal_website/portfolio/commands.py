@@ -21,8 +21,7 @@ class CommandRegistry:
     """Encapsulates command definitions and bridge functions for Flask routes."""
 
     _SIMULATED_TERMINAL_MESSAGE = (
-        "Oops sorry, this is just a simulation of a real terminal. "
-        "Type 'help' to see available commands."
+        "Oops sorry, this is just a simulation of a real terminal. Type 'help' to see available commands."
     )
 
     _UNIX_COMMANDS = (
@@ -119,9 +118,7 @@ class CommandRegistry:
         return jsonify(
             {
                 "kind": "error",
-                "output": (
-                    "CV file missing. Replace 'static/files/demo_cv.pdf' with your actual resume."
-                ),
+                "output": ("CV file missing. Replace 'static/files/demo_cv.pdf' with your actual resume."),
             }
         )
 
