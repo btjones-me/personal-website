@@ -2,6 +2,7 @@ const terminalOutput = document.getElementById("terminal-output");
 const terminalForm = document.getElementById("terminal-form");
 const commandInput = document.getElementById("command-input");
 const promptLabel = document.querySelector(".terminal-prompt");
+const commandPills = document.querySelectorAll("[data-command]");
 
 // Chat mode state
 let chatMode = false;
@@ -254,5 +255,14 @@ if (terminalForm && commandInput && terminalOutput) {
   appendEntry({
     type: "output",
     content: "Type 'help' to explore available commands, or just ask me a question!",
+  });
+}
+
+if (commandPills.length && commandInput) {
+  commandPills.forEach((pill) => {
+    pill.addEventListener("click", () => {
+      commandInput.value = pill.dataset.command;
+      commandInput.focus();
+    });
   });
 }

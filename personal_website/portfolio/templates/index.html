@@ -8,6 +8,29 @@
       Welcome to my command-driven portfolio. Type a command below to explore my work, grab my CV,
       or learn more about me. Start with <code>help</code> if you're curious.
     </p>
+    <div class="chip-cloud" role="list">
+      <span class="chip" role="listitem">Applied AI & LLMs</span>
+      <span class="chip" role="listitem">Python · Flask · FastAPI</span>
+      <span class="chip" role="listitem">Retrieval & Evaluation</span>
+      <span class="chip" role="listitem">Product-minded engineer</span>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <p class="stat-label">Focus</p>
+        <p class="stat-value">AI-native products</p>
+        <p class="stat-sub">Agents, workflow design, evaluations</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Currently</p>
+        <p class="stat-value">Building with LLMs</p>
+        <p class="stat-sub">Shipping thoughtful, reliable experiences</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Style</p>
+        <p class="stat-value">Pragmatic</p>
+        <p class="stat-sub">Useful first, polished always</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -31,7 +54,14 @@
       />
     </form>
   </div>
-  <div class="intro" style="font-size: 0.9em; color: #888; margin-top: 0.25em; text-align: center;">
+  <div class="command-suggestions" aria-label="Quick commands">
+    <button class="command-pill" type="button" data-command="help">help</button>
+    <button class="command-pill" type="button" data-command="about">about</button>
+    <button class="command-pill" type="button" data-command="projects">projects</button>
+    <button class="command-pill" type="button" data-command="cv">cv</button>
+    <button class="command-pill" type="button" data-command="chat">chat</button>
+  </div>
+  <div class="terminal-footnote">
     Prefer a traditional interface? See the <a href="{{ url_for('summary') }}">summary here</a>
   </div>
 </section>
