@@ -20,7 +20,10 @@ class Command:
 class CommandRegistry:
     """Encapsulates command definitions and bridge functions for Flask routes."""
 
-    _SIMULATED_TERMINAL_MESSAGE = "Oops sorry, this is just a simulation of a real terminal. Type 'help' to see available commands."
+    _SIMULATED_TERMINAL_MESSAGE = (
+        "Oops sorry, this is just a simulation of a real terminal. "
+        "Type 'help' to see available commands."
+    )
 
     _UNIX_COMMANDS = (
         "ls",
@@ -232,10 +235,11 @@ class CommandRegistry:
     def _this_app_handler(self, _: str) -> Dict[str, str]:
         app_overview = (
             "App architecture: A lightweight Flask app serving a terminal-style UI with an AI "
-            "backend. It serves as a demonstration practicing context engineering, guardrails, rate "
-            "limits, and logging/observability. Commands are handled through a registry and a "
-            "summary view; the design is intentionally minimal but shows solid engineering "
-            "hygiene, safety awareness, and configurability rather than just raw model calls.\n\n"
+            "backend. It serves as a demonstration practicing context engineering, guardrails, "
+            "rate limits, and logging/observability. Commands are handled through a registry and "
+            "a summary view; the design is intentionally minimal but shows solid engineering "
+            "hygiene, safety awareness, and configurability rather than just raw model "
+            "calls.\n\n"
             "AI implementation: An LLM service built with Pydantic AI agents, the Pydantic AI "
             "Gateway, Logfire, and Google Gemini (default gateway/google-vertex:gemini-2.5-flash, "
             "switchable to 2.5 Pro). It uses a hardened system prompt focused strictly on Ben’s "

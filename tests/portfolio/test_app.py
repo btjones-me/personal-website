@@ -53,7 +53,10 @@ def test_unix_command_hint(client):
     assert response.status_code == 200
     assert data == {
         "kind": "error",
-        "output": "Oops sorry, this is just a simulation of a real terminal. Type 'help' to see available commands.",
+        "output": (
+            "Oops sorry, this is just a simulation of a real terminal. "
+            "Type 'help' to see available commands."
+        ),
     }
 
 

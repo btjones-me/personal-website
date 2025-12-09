@@ -9,7 +9,6 @@ logfire.configure()
 logfire.instrument_pydantic_ai()
 
 
-
 settings = GoogleModelSettings(
     temperature=0.2,
     max_tokens=1024,

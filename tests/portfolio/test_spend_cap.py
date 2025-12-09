@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """Manual test to probe Gemini spend caps with the 2.5 Pro model.
 
 Pricing reference (Dec 2025 web search):
@@ -7,6 +5,8 @@ Pricing reference (Dec 2025 web search):
 - Output: ~$10.00 per 1M tokens (≤200k tokens)
 With a $1 cap we expect the gateway to reject high-volume calls well before ~$3 of usage.
 """
+
+from __future__ import annotations
 
 import importlib
 import os
